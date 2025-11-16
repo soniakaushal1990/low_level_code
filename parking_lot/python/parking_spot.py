@@ -45,5 +45,7 @@ class ParkingSpot:
             return self.spot_size == VehicleSize.LARGE
         else:
             return False
+        
+        
 
 
