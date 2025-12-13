@@ -1,0 +1,75 @@
+Recipe for low level design
+
+Use cases , Nouns and verbs , Relations and SOLID
+
+Actors and Actions - Who uses the system
+
+Parking Lot 
+
+The driver enters the parking lot , take the ticket , park the vehicle in the parking lot at a parking spot , system calculates the fee and pay the parking price and leave
+
+
+Step 2 - Find out nouns and verbs
+Nouns
+    Vehicle
+    Parking Lot 
+    Parking spot(Compact,large,bike)
+    Ticket
+    Vehicle(Byke,Car,Bus)
+    PaymentSystem
+    RateCalculator
+
+Verbs
+    Ticket - close
+    ParkingLot - assignSpot,getAvailableSpot,freeSpot
+    ParkingSpot - isAvailable,occupy ,free
+    PaymentSystem - makePayment
+    RateCalculator - calculatefees
+
+
+ParkingLot
+    +getAvailableSpot()
+    +freeSpot()
+    +assignSpot(Vehicle)
+
+ParkingSpot
+    +occupy(Vehicle)
+    +free()
+
+
+Ticket
+    +entryTime()
+    +close(exitTime,amountPaid)
+
+class PaymentService
++makePayment(ticket, method)
+
+
+Step 3
+Relationships
+
+ParkingLot
+spots -> List<ParkingSpot>
+tickets -> map<ticket_id , Ticket>
+assignSpot(vehicle) -> 
+freeSpot(vehicle)
+getAvailableSpot()
+
+ParkingSpot
+id 
+type 
+isAvailable
+occupy
+free
+
+Vehicle
+
+type 
+plateNo
+
+
+
+
+
+
+
