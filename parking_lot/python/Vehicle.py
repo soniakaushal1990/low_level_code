@@ -1,22 +1,17 @@
-from abc import ABC
-from VehicleSize import VehicleSize
-from abc import abstractmethod
+from parking_lot.python.spotType import VehicleSize , SpotSize
+from abc import ABC , abstractmethod
 
 class Vehicle(ABC):
-    def __init__(self,license_no:str,size:VehicleSize):
+    def __init__(self,license_no:str):
         self._license_no = license_no
-        self._size = size
 
-    def get_license_number(self) -> str:
+    def get_license_no(self) -> str:
         return self._license_no
     
-    def get_size(self) -> str:
-        return self._size
-    
     @abstractmethod
-    def get_type(self) -> str:
-        return "Vehicle"
-    
+    def get_required_spot_size(self) -> SpotSize:
+        pass 
 
+    
 
         

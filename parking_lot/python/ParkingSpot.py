@@ -1,48 +1,31 @@
 from Vehicle import Vehicle
-from VehicleSize import VehicleSize
-from typing import Optional
-from dataclasses import dataclass,field
-import itertools
+from spotType import SpotType
 
-@dataclass
+class ParkingSpot():
+    _counter = 1
 
-class ParkingSpot:
+    def __init__(self,type:SpotType):
+        self.spot_id = ParkingSpot._counter
+        ParkingSpot._counter += 1
 
-    size: VehicleSize
-    idCounter = itertools.count(1)
-    spot_id: int = field(init=False)
-    vehicle: Optional[Vehicle] = field(default=None, init=False)
+        self.type = type
+        self.vehicle : Vehicle | None = None
 
-    def __post_init__(self) -> None:
-        self.spot_id = next(ParkingSpot.idCounter)
-
-    def isOccupied(self) -> bool:
+    def has_vehicle(self) -> bool:
         return self.vehicle is not None
     
-    def fits(self,vehicle:Vehicle) -> bool:
-        return self.size >= vehicle.get_size() 
+    def can_fit(self,vehicle:Vehicle) -> bool:
+        return self.type.value >= vehicle.get_required_spot_size().value
     
-    def park(self,vehicle:Vehicle) -> bool:
-        if self.isOccupied():
+    def park(self,vehicle: Vehicle) -> bool:
+        if self.has_vehicle():
             return False
-        if not self.fits(vehicle):
+        if not self.can_fit(vehicle):
             return False
         self.vehicle = vehicle
         return True
-
-    def unpark(self) -> Optional[Vehicle]:
+    
+    def unpark(self) -> Vehicle | None:
         vehicle = self.vehicle
         self.vehicle = None
         return vehicle
-
-            
-
-    
-
-
-
-
-
-    
-
-

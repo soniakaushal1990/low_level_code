@@ -1,13 +1,6 @@
+from parking_lot.python.spotType import VehicleSize, SpotSize
 from Vehicle import Vehicle
-from VehicleSize import VehicleSize
 
 class Car(Vehicle):
-    def __init__(self, license_number:str):
-        super().__init__(license_number,VehicleSize.MEDIUM)
-
-    def get_type(self) -> str:
-        return "CAR"
-        
-
-
-
+    def get_required_spot_size(self) -> SpotSize:
+        return SpotSize.COMPACT
