@@ -1,5 +1,5 @@
-import { LibraryStore , LibraryPolicy }  from "./typescript/libraryStore";
-import { Loan } from "./typescript/entities";
+import { LibraryStore , LibraryPolicy }  from "./libraryStore";
+import { Loan } from "./entities";
 
 type ID = string ;
 
